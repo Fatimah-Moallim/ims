@@ -47,7 +47,7 @@ namespace IMS.Plugins.InMemory
             return await Task.FromResult(_inventories.First(x => x.InventoryId == inventoryId));
         }
 
-        public async Task<IEnumerable<Inventory>> GetRepositoriesByNameAsync(string name)
+        public async Task<IEnumerable<Inventory>> GetInventoriesByNameAsync(string name)
         {
             if (string.IsNullOrWhiteSpace(name)) return await Task.FromResult(_inventories);
 
