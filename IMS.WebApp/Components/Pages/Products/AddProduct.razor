@@ -1,11 +1,13 @@
 ﻿@page "/addproduct"
 
+@rendermode InteractiveServer
+
 @inject IAddProductUseCase AddProductUseCase
 @inject NavigationManager NavigationManager
 
 <h3>Add Product</h3>
 
-<EditForm Model="product" FormName="formProduct" OnValidSubmit="Save">
+<EditForm Model="product" OnValidSubmit="Save">
     <DataAnnotationsValidator></DataAnnotationsValidator>
     <ValidationSummary></ValidationSummary>
 
@@ -36,6 +38,11 @@
         <ValidationMessage For="() => product.Price"></ValidationMessage>
 
     </div>
+
+    <div class="form-group">
+        <label>Inventories</label>
+        <SearchProductInventoriesComponent></SearchProductInventoriesComponent>
+    </div>
     <br />
 
     <button type="submit" class="btn btn-primary">Save</button>
@@ -44,7 +51,6 @@
 </EditForm>
 
 @code {
-    [SupplyParameterFromForm]
     private Product product { get; set; } = new Product();
 
     private async Task Save()
